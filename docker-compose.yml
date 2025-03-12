@@ -1,11 +1,5 @@
 version: '3.8'
 
-x-develop:
-  watch:
-    - action: sync
-      path: .  # Proje klasörünü izler
-      target: /app  # Konteyner içindeki hedef dizin
-
 services:
   web:
     build:
