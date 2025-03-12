@@ -2,12 +2,12 @@ from fastapi import APIRouter,Depends,Path,HTTPException,Request
 from pydantic import BaseModel,Field
 from starlette.responses import RedirectResponse
 
-from models import Base, Todo
+from ..models import Base, Todo
 from sqlalchemy.orm import Session
-from database import engine,SessionLocal #seccionlocal veritabanıyla bağlantı sağlar
+from ..database import engine,SessionLocal #seccionlocal veritabanıyla bağlantı sağlar
 from typing import Annotated
 from starlette import status
-from routers.auth import get_current_user
+from ..routers.auth import get_current_user
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv #llm yüklemek için kullanırız
 import google.generativeai as genai
@@ -21,7 +21,7 @@ router=APIRouter(
     tags=["Todo"]
 )
 
-templates=Jinja2Templates(directory="templates")
+templates=Jinja2Templates(directory="app/templates")
 
 class TodoRequest(BaseModel):
     title:str =Field(min_length=3)

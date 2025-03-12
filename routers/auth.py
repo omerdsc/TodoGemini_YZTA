@@ -2,9 +2,9 @@ from tokenize import Token
 
 from fastapi import APIRouter,Depends,HTTPException,Request
 from pydantic import BaseModel
-from models import User
+from ..models import User
 from passlib.context import CryptContext # hash şifrelemesi
-from database import SessionLocal
+from ..database import SessionLocal
 from typing import Annotated
 from sqlalchemy.orm import Session
 from starlette import status
@@ -18,7 +18,7 @@ router=APIRouter(
     tags=["Authentication"]#hangi getin hangi kısma ait olduğunu gösterir
 ) #farklı apiler oluşturmak yerine ayn api kullanıyoruz
 
-templates=Jinja2Templates(directory="templates")
+templates=Jinja2Templates(directory="app/templates")
 
 SECRET_KEY="bl4y9xvvcgxwvqf777qlz39b4hxk6rghbl4y9xvvcgxwvqf777qlz39b4hxk6rgh"
 ALGORITHM="HS256"
